@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="pyfiles\python_functions.py" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="pyfiles\python_functions.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="pythonnet_netstandard_py38_win" Version="2.5.1" Condition="'$(RuntimeIdentifier)' != 'ubuntu.18.04-x64' AND '$(RuntimeIdentifier)' != 'rhel.6-x64'" />
+    <PackageReference Include="pythonnet_netstandard_py36_linux" Version="2.5.1" Condition="'$(RuntimeIdentifier)' == 'ubuntu.18.04-x64' OR '$(RuntimeIdentifier)' == 'rhel.6-x64'" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\lib.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\main.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\main.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+
+</Project>
