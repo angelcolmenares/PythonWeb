@@ -235,3 +235,5 @@ _Pvt_Extensions
 App_Data/
 
 *.pyc
+
+gmm0.9.hdf5
