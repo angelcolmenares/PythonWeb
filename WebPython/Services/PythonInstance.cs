@@ -1,5 +1,7 @@
 ﻿using Python.Runtime;
 using System.IO;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 
 namespace WebPython.Services
 {
@@ -7,8 +9,11 @@ namespace WebPython.Services
     public class PythonInstance
     {
         private readonly dynamic python_functions;
-        public PythonInstance()
+        private readonly IConfiguration _configuration;
+        private dynamic __models;
+        public PythonInstance(IConfiguration configuration)
         {
+            _configuration = configuration;
             PythonEngine.Initialize();
             PythonEngine.BeginAllowThreads();
             using (Py.GIL())
@@ -19,6 +24,11 @@ namespace WebPython.Services
                 sys.path.append(pyfilesDir);
 
                 python_functions = Py.Import("python_functions");
+
+                var model_path= _configuration.GetValue<string>("model_path");
+                __models = python_functions.create_model(model_path);
+
+
             }
         }
 
@@ -38,6 +48,18 @@ namespace WebPython.Services
                 return new AreaResultWithComment(pythonResult);
             }
         }
+        
+
+        public object Predict(double fist, double second){
+            using (Py.GIL())
+            {
+                var input = new List<int>( new int[] { 1,2,3,4,5,6,7,8});                     
+                var result = __models.predict( input);
+                System.Console.WriteLine(result[0][0]);
+                return result;
+                
+            }
+        }
     }
 
     public class AreaResultWithComment
@@ -51,4 +73,5 @@ namespace WebPython.Services
         public double Value { get; private set; }
         public string Comment { get; }
     }
+
 }

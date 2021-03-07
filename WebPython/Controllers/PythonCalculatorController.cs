@@ -17,6 +17,7 @@ namespace WebPython.Controllers
         [HttpGet("calculate-area")]
         public double CalculateArea([FromQuery] double width, double height)
         {           
+            var prediction = _python.Predict(2,2);
             return _python.CalculateArea(width, height);
         }
 
