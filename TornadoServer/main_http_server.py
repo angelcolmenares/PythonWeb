@@ -1,3 +1,4 @@
+import sys, getopt
 import tornado.ioloop
 import tornado.web
 import json
@@ -33,15 +34,37 @@ class MainHandler(tornado.web.RequestHandler):
         self.__model_initialized__= True
 
 
-
-def make_app():
-    
+def make_app():    
     url_ext = r"/predict" 
     return tornado.web.Application([
         (url_ext, MainHandler, dict(model_path="gmm0.9.hdf5")),
     ])
 
-if __name__ == "__main__":
+
+def main(argv):
+    port=''
+    try:
+        opts, args = getopt.getopt(argv,"hp:",["port="])
+    except getopt.GetoptError:
+        print('main_http_server.py -p <port>')
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h':
+            print( 'main_http_server.py -p <port>')
+            sys.exit()
+        elif opt in ("-p", "--port"):
+            port = arg
+            
+    if port=='':
+        print('main_http_server.py -p <port>')
+        sys.exit(2)             
+      
+    print ('listen on port ', int(port))
+
     app = make_app()
-    app.listen(8888)
-    tornado.ioloop.IOLoop.current().start()
+    app.listen( int(port))
+    print ('listening...')
+    tornado.ioloop.IOLoop.current().start()   
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
