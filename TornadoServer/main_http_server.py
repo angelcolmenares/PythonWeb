@@ -34,17 +34,20 @@ class MainHandler(tornado.web.RequestHandler):
         self.__model_initialized__= True
 
 
-def make_app():    
+def make_app(config_file):    
     url_ext = r"/predict" 
     return tornado.web.Application([
         (url_ext, MainHandler, dict(model_path="gmm0.9.hdf5")),
     ])
 
 
-def main(argv):
+
+def get_args(argv):
     port=''
+    config_file=''
+    portAsInt=0    
     try:
-        opts, args = getopt.getopt(argv,"hp:",["port="])
+        opts, args = getopt.getopt(argv,"hp:c:",["port=", "--config-file"])
     except getopt.GetoptError:
         print('main_http_server.py -p <port>')
         sys.exit(2)
@@ -53,16 +56,27 @@ def main(argv):
             print( 'main_http_server.py -p <port>')
             sys.exit()
         elif opt in ("-p", "--port"):
-            port = arg
-            
+            port = arg            
+        elif opt in ("-c", "--config-file"):
+            config_file= arg
     if port=='':
         print('main_http_server.py -p <port>')
-        sys.exit(2)             
-      
-    print ('listen on port ', int(port))
+        sys.exit(2)                   
+    try:
+        portAsInt = int(port)
+    except :
+        print('invalid port number', port)
+        print('main_http_server.py -p <port>')
+        sys.exit(2)
+    return {'port':portAsInt, 'config_file':config_file}    
 
-    app = make_app()
-    app.listen( int(port))
+
+def main(argv):
+    app_args = get_args(argv)
+    print('config file ', app_args["config_file"] )
+    print ('listen on port ',  app_args["port"])
+    app = make_app(app_args["config_file"])
+    app.listen( app_args["port"] )
     print ('listening...')
     tornado.ioloop.IOLoop.current().start()   
 
