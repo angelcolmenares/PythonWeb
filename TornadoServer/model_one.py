@@ -19,9 +19,6 @@ class ModelOne():
         prediction = self.model.predict(np_input.reshape(1,8))        
         return prediction
 
-def get_version():
-    return sys.version
-
 def create_model_one(model_path):
     return  ModelOne(model_path)
 
