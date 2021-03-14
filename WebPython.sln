@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30323.103
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebPython", "WebPython\WebPython.csproj", "{6FC09BCE-B61C-42B5-8C72-1B757DD60493}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PythonNet", "PythonNet\PythonNet.csproj", "{9ABCFCB3-1858-4176-A4E0-4571D5D57294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{E2AD69DF-A489-4677-8B22-8A230CCE9EE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,22 @@ Global
 		{6FC09BCE-B61C-42B5-8C72-1B757DD60493}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6FC09BCE-B61C-42B5-8C72-1B757DD60493}.Release|x64.ActiveCfg = Release|x64
 		{6FC09BCE-B61C-42B5-8C72-1B757DD60493}.Release|x64.Build.0 = Release|x64
+		{9ABCFCB3-1858-4176-A4E0-4571D5D57294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ABCFCB3-1858-4176-A4E0-4571D5D57294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ABCFCB3-1858-4176-A4E0-4571D5D57294}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9ABCFCB3-1858-4176-A4E0-4571D5D57294}.Debug|x64.Build.0 = Debug|Any CPU
+		{9ABCFCB3-1858-4176-A4E0-4571D5D57294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ABCFCB3-1858-4176-A4E0-4571D5D57294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ABCFCB3-1858-4176-A4E0-4571D5D57294}.Release|x64.ActiveCfg = Release|Any CPU
+		{9ABCFCB3-1858-4176-A4E0-4571D5D57294}.Release|x64.Build.0 = Release|Any CPU
+		{E2AD69DF-A489-4677-8B22-8A230CCE9EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2AD69DF-A489-4677-8B22-8A230CCE9EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2AD69DF-A489-4677-8B22-8A230CCE9EE8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E2AD69DF-A489-4677-8B22-8A230CCE9EE8}.Debug|x64.Build.0 = Debug|Any CPU
+		{E2AD69DF-A489-4677-8B22-8A230CCE9EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2AD69DF-A489-4677-8B22-8A230CCE9EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2AD69DF-A489-4677-8B22-8A230CCE9EE8}.Release|x64.ActiveCfg = Release|Any CPU
+		{E2AD69DF-A489-4677-8B22-8A230CCE9EE8}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

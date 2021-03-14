@@ -2,6 +2,7 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
+using System;
 
 namespace WebPython.Services
 {
@@ -31,6 +32,14 @@ namespace WebPython.Services
 
             }
         }
+
+        public void Execute(Action action)
+        {
+            using(Py.GIL())
+            {
+                action();
+            }
+        } 
 
         public double CalculateArea(double widht, double height)
         {
